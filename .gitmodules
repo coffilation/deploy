@@ -1,0 +1,3 @@
+[submodule "services/backend"]
+	path = services/backend
+	url = git@github.com:coffilation/coffilation-backend.git
