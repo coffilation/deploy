@@ -36,7 +36,7 @@ services:
   nest:
     restart: always
     depends_on:
-      - migrations
+      - pg
     image: xalvaine/coffilation-backend:${VERSION}
     env_file:
       - .env
