@@ -58,6 +58,7 @@ services:
     restart: always
     image: xalvaine/coffilation-search:${SEARCH_VERSION}
     environment:
+      NEST_ADDRESS: 0.0.0.0
       VERSION: ${SEARCH_VERSION}
     working_dir: /home/app
     expose:
