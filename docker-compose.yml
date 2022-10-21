@@ -50,7 +50,7 @@ services:
     command: yarn start:prod
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.backend.rule="Host(`test.api.coffilation.ru`) || Host(`backend.test.coffilation.ru`)"'
+      - 'traefik.http.routers.backend.rule=Host(`test.api.coffilation.ru`, `backend.test.coffilation.ru`)'
       - 'traefik.http.routers.backend.entryPoints=webSecure'
       - 'traefik.http.routers.backend.tls.certResolver=myResolver'
 
