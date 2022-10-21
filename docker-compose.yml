@@ -50,9 +50,9 @@ services:
     command: yarn start:prod
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.nest.rule="Host(`test.api.coffilation.ru`) || Host(`backend.test.coffilation.ru`)"'
-      - 'traefik.http.routers.nest.entryPoints=webSecure'
-      - 'traefik.http.routers.nest.tls.certResolver=myResolver'
+      - 'traefik.http.routers.backend.rule="Host(`test.api.coffilation.ru`) || Host(`backend.test.coffilation.ru`)"'
+      - 'traefik.http.routers.backend.entryPoints=webSecure'
+      - 'traefik.http.routers.backend.tls.certResolver=myResolver'
 
   search:
     restart: always
@@ -65,9 +65,9 @@ services:
     command: yarn start:prod
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.nest.rule=Host(`search.test.coffilation.ru`)'
-      - 'traefik.http.routers.nest.entryPoints=webSecure'
-      - 'traefik.http.routers.nest.tls.certResolver=myResolver'
+      - 'traefik.http.routers.search.rule=Host(`search.test.coffilation.ru`)'
+      - 'traefik.http.routers.search.entryPoints=webSecure'
+      - 'traefik.http.routers.search.tls.certResolver=myResolver'
 
   traefik:
     image: traefik:v2.8
