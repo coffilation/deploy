@@ -42,8 +42,6 @@ services:
       - .env
     environment:
       VERSION: ${BACKEND_VERSION}
-    volumes:
-      - nest_node_modules:/home/app/node_modules
     working_dir: /home/app
     expose:
       - 8000
@@ -92,4 +90,3 @@ volumes:
   pg:
   pgadmin:
   letsencrypt:
-  nest_node_modules:
