@@ -28,7 +28,7 @@ services:
     image: xalvaine/coffilation-backend:${BACKEND_VERSION}
     env_file:
       - .env
-    command: yarn orm:migration:run
+    command: python manage.py migrate
     working_dir: /home/app
     profiles:
       - backend_migrations
@@ -42,11 +42,13 @@ services:
       - .env
     environment:
       VERSION: ${BACKEND_VERSION}
-      PLACE_LOOKUP_ENDPOINT: http://search:8000/lookup
+      NOMINATIM_SEARCH_ENDPOINT: https://nominatim.openstreetmap.org/search
+      NOMINATIM_LOOKUP_ENDPOINT: https://nominatim.openstreetmap.org/lookup
+      POSTGRES_HOST: pg
     working_dir: /home/app
     expose:
       - 8000
-    command: yarn start:prod
+    command: python manage.py runserver 0.0.0.0:8000
     labels:
       - 'traefik.enable=true'
       - 'traefik.http.routers.backend.rule=Host(`backend.test.coffilation.ru`)'
