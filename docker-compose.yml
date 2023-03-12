@@ -28,6 +28,8 @@ services:
     image: xalvaine/coffilation-backend:${BACKEND_VERSION}
     env_file:
       - .env
+    environment:
+      POSTGRES_HOST: pg
     command: python manage.py migrate
     working_dir: /home/app
     profiles:
@@ -42,8 +44,6 @@ services:
       - .env
     environment:
       VERSION: ${BACKEND_VERSION}
-      NOMINATIM_SEARCH_ENDPOINT: https://nominatim.openstreetmap.org/search
-      NOMINATIM_LOOKUP_ENDPOINT: https://nominatim.openstreetmap.org/lookup
       POSTGRES_HOST: pg
     working_dir: /home/app
     expose:
