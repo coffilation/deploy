@@ -43,7 +43,7 @@ services:
     env_file:
       - .env
     environment:
-      VERSION: ${BACKEND_VERSION}
+      BACKEND_VERSION: ${BACKEND_VERSION}
       POSTGRES_HOST: pg
     working_dir: /home/app
     expose:
