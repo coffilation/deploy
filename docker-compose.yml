@@ -2,7 +2,9 @@ version: '3'
 
 services:
   pg:
-    image: postgres:13-alpine
+    image: postgis/postgis:15-master
+    environment:
+      PGDATA: /var/lib/postgresql/data
     env_file:
       - .env
     volumes:
