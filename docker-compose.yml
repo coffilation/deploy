@@ -17,8 +17,6 @@ services:
     image: xalvaine/coffilation-backend:${BACKEND_VERSION}
     env_file:
       - .env
-    environment:
-      POSTGRES_HOST: pg
     command: python manage.py migrate
     working_dir: /home/app
     profiles:
