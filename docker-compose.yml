@@ -35,7 +35,7 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.backend.rule=Host(`test.api.coffilation.ru`, `backend.test.coffilation.ru`)'
+      - 'traefik.http.routers.backend.rule=Host(`backend.test.coffilation.ru`)'
       - 'traefik.http.routers.backend.entryPoints=webSecure'
       - 'traefik.http.routers.backend.tls.certResolver=myResolver'
 
