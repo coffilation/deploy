@@ -1,17 +1,6 @@
 version: '3'
 
 services:
-  pg:
-    image: postgis/postgis:15-master
-    environment:
-      PGDATA: /var/lib/postgresql/data
-    env_file:
-      - .env
-    volumes:
-      - pg:/var/lib/postgresql/data
-    expose:
-      - 5432
-
   pgadmin:
     image: dpage/pgadmin4
     env_file:
@@ -25,8 +14,6 @@ services:
       - 'traefik.http.routers.pgadmin.tls.certResolver=myResolver'
 
   backend_migrations:
-    depends_on:
-      - pg
     image: xalvaine/coffilation-backend:${BACKEND_VERSION}
     env_file:
       - .env
@@ -39,14 +26,11 @@ services:
 
   backend:
     restart: always
-    depends_on:
-      - pg
     image: xalvaine/coffilation-backend:${BACKEND_VERSION}
     env_file:
       - .env
     environment:
       BACKEND_VERSION: ${BACKEND_VERSION}
-      POSTGRES_HOST: pg
     working_dir: /home/app
     expose:
       - 8000
@@ -76,6 +60,5 @@ services:
       - '/var/run/docker.sock:/var/run/docker.sock:ro'
 
 volumes:
-  pg:
   pgadmin:
   letsencrypt:
